@@ -29,10 +29,15 @@
             "assets": [],
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "outputPath": "dist/demo",
-            "polyfills": ["zone.js"],
+            "outputPath": "dist/guard-id-app",
+            "baseHref": "/guard-id-app/",
+            "polyfills": [
+              "zone.js"
+            ],
             "scripts": [],
-            "styles": ["src/global_styles.css"],
+            "styles": [
+              "src/global_styles.css"
+            ],
             "tsConfig": "tsconfig.app.json"
           }
         },
