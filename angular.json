@@ -68,6 +68,13 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/guard-id-app/",
+            "dir": "docs"
+          }
         }
       }
     }
