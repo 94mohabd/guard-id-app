@@ -8,38 +8,42 @@
     "demo": {
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
-          "configurations": {
-            "development": {
-              "extractLicenses": false,
-              "namedChunks": true,
-              "optimization": false,
-              "sourceMap": true
-            },
-            "production": {
-              "aot": true,
-              "extractLicenses": true,
-              "namedChunks": false,
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false
-            }
-          },
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "assets": [],
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "outputPath": "dist/guard-id-app",
+            "outputPath": "docs/",
             "baseHref": "/guard-id-app/",
+            "index": "src/index.html",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "scripts": [],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [],
             "styles": [
               "src/global_styles.css"
             ],
-            "tsConfig": "tsconfig.app.json"
-          }
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractLicenses": true,
+              "namedChunks": false,
+              "aot": true
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
