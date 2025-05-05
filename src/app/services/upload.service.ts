@@ -13,7 +13,7 @@ export interface ErrorResponse {
     providedIn: 'root'
 })
 export class UploadService {
-    private apiBaseUrl = 'https://localhost:7042/api/Detection';
+    private apiBaseUrl = 'https://guardid-dugdbpembqa0ega6.centralus-01.azurewebsites.net/api/Detection';
 
     constructor(private http: HttpClient) { }
 
