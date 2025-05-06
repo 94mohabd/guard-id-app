@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadResultViewModel } from '../../models/upload-result.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verification-result',
@@ -274,7 +275,7 @@ import { CommonModule } from '@angular/common';
     .face-label { color: #6b7280; font-size: 0.95rem; margin-top: 4px; }
     .face-score-circle { width: 60px; height: 60px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; color: #10b981; margin: 0 auto 8px auto; }
     .face-match-desc { color: #374151; font-size: 0.98rem; margin-bottom: 8px; }
-    .extracted-card pre { background: #f3f4f6; border-radius: 8px; padding: 12px; font-size: 1rem; margin: 0 0 8px 0; }
+    .extracted-card pre { background: #f3f4f6; border-radius: 8px; padding: 12px; font-size: 1rem; margin: 0 0 8px 0; text-wrap: auto; }
     .note { color: #6b7280; font-size: 0.95rem; margin-top: 4px; background: #e0e7ff; border-radius: 6px; padding: 6px 10px; }
     .metadata-content { display: flex; gap: 32px; }
     .metadata-block { flex: 1; }
@@ -286,10 +287,12 @@ import { CommonModule } from '@angular/common';
     @media (max-width: 700px) {
       .result-container { padding: 8px; max-width: 100vw; }
       .summary-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .summary-header-content {display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; flex-direction: row-reverse; }
       .main-grid { flex-direction: column; gap: 0; }
       .left-col, .right-col { gap: 16px; }
       .info-section, .location-section, .metadata-content { flex-direction: column; gap: 12px; }
     }
+    
     .error-header {
       background: linear-gradient(90deg, #fef2f2 0%, #f3e8ff 100%);
       border: 1.5px solid #fecaca;
@@ -333,6 +336,8 @@ export class VerificationResultComponent implements OnInit {
   showExtractedDetails = true;
   showMetadataDetails = true;
 
+  constructor(private router: Router) { }
+
   ngOnInit() {
     const storedResult = localStorage.getItem('verificationResult');
     if (storedResult) {
@@ -370,6 +375,6 @@ export class VerificationResultComponent implements OnInit {
 
   clearAndGoHome() {
     localStorage.clear();
-    window.location.href = '/id-upload-front';
+    this.router.navigate(['/id-upload-front']);
   }
 } 

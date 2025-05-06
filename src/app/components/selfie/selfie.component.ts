@@ -51,6 +51,14 @@ import { NgIf } from '@angular/common';
           {{ isUploading ? 'Uploading...' : 'Complete Verification' }}
         </button>
       </div>
+
+      <!-- Loading Overlay -->
+      <div class="loading-overlay" *ngIf="isUploading">
+        <div class="loading-content">
+          <div class="spinner"></div>
+          <p>Uploading your verification...</p>
+        </div>
+      </div>
     </div>
   `,
   styles: [`
@@ -59,6 +67,7 @@ import { NgIf } from '@angular/common';
       flex-direction: column;
       height: 100vh;
       padding: var(--spacing-lg);
+      position: relative;
     }
     
     .header {
@@ -159,6 +168,43 @@ import { NgIf } from '@angular/common';
     .primary-button:disabled {
       opacity: 0.7;
       cursor: not-allowed;
+    }
+
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .loading-content {
+      text-align: center;
+      padding: var(--spacing-xl);
+      background-color: white;
+      border-radius: var(--border-radius-md);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .loading-content .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--primary-color);
+      border-top-color: transparent;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-content p {
+      color: var(--primary-color);
+      font-size: 16px;
+      margin: 0;
     }
   `]
 })
